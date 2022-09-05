@@ -1,17 +1,55 @@
+
 void main() {
-  // print("Olá mundo !1");
 
-  String nome = "Alfredo";
-  double peso = 70.0;
-  String cor = "Pardo";
-  String suna = "suna";
-  int idade = 20;
-  bool isLouco;
+  String nome = "Maça";
+  double peso = 100.0;
+  String cor = "vermelha";
+  int diasDesdeColheita = 20;
+  bool isMadura = funcEstaMadura(diasDesdeColheita);
 
-  if(idade>= 18){
-    isLouco = true;
+  print(isMadura);
+
+  mostrarMadura(nome, diasDesdeColheita, cor: cor);
+
+  int quantosDias = funcQuantosDiasMadura(diasDesdeColheita);
+
+  print('Faltam ${quantosDias} dias para ficar madura');
+
+
+
+}
+
+//Posicionais Obrigatórios
+//Nomeados Opcionais
+//Parâmetros "Padrão"
+//Modificador "required"
+
+
+int funcQuantosDiasMadura(int dias){
+  int diasParaMadura = 30;
+  int quantosDiasFalta =  diasParaMadura - dias;
+  return quantosDiasFalta;
+}
+
+mostrarMadura(String nome , int dias,  {String? cor}){
+  if(dias >= 30){
+    print('A ${nome} está madura.');
   }else{
-    isLouco = false;
+    print('A ${nome} não está madura.');
   }
+
+  if(cor != null){
+    print('A ${nome} é ${cor}.');
+  }
+
+}
+
+
+bool funcEstaMadura(int dias){
+  if(dias>= 30){
+    return true;
+  }
+
+  return false;
 
 }
