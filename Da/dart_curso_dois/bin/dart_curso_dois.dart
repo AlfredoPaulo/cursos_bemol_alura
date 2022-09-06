@@ -4,17 +4,42 @@ void main() {
   String nome = "Maça";
   double peso = 100.0;
   String cor = "vermelha";
+  String sabor = "suave";
   int diasDesdeColheita = 20;
   bool isMadura = funcEstaMadura(diasDesdeColheita);
 
-  print(isMadura);
 
-  mostrarMadura(nome, diasDesdeColheita, cor: cor);
+Fruta fruta01 = Fruta(nome, peso, cor, sabor, diasDesdeColheita);
+Fruta fruta02 = Fruta('uva', 100, 'roxa', 'doce', 20);
 
-  int quantosDias = funcQuantosDiasMadura(diasDesdeColheita);
+print(fruta01.nome);
+print(fruta01);
+print(fruta02);
 
-  print('Faltam ${quantosDias} dias para ficar madura');
+fruta01.estaMadura(30);
+fruta02.estaMadura(60);
 
+print(fruta02.estaMadura(50));
+
+
+}
+
+class Fruta{
+  String nome;
+  double peso;
+  String cor;
+  String sabor;
+  int diasDesdeColheita;
+  bool? isMadura;
+
+  Fruta(this.nome, this.peso, this.cor, this.sabor, this.diasDesdeColheita, {this.isMadura});
+
+
+  estaMadura(int diasParaMadura){
+    isMadura = diasDesdeColheita >= diasParaMadura;
+    print('A sua ${nome} foi colhida  a ${diasDesdeColheita} dias , e precisa de ${diasParaMadura} para poder comer.'
+        'Ela está madura ? ${isMadura}');
+  }
 
 
 }
